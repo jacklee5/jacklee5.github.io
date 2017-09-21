@@ -1,0 +1,158 @@
+<html>
+    <head>
+        <title>爸爸，生日快乐！</title>
+        <meta charset = "utf-8">
+        <style>
+            @import url(//fonts.googleapis.com/earlyaccess/notosansscsliced.css);
+            body{
+                font-family:'Noto Sans SC Sliced',sans-serif;
+                background:url('stripes.jpg');
+                height:100vh;
+                margin:0px;
+                overflow:hidden;
+            }
+            h1{
+                font-size:80px;
+                text-align:center;
+                color:yellow;
+                text-shadow:0 8px 8px rgba(0,0,0,.14);
+                position:absolute;
+                top:0px;
+                z-index:2;
+                width:100%;
+                margin-bottom:8px;
+            }
+            canvas{
+                cursor:pointer;
+                transition:all 1s;
+            }
+            @keyframes wave{
+                0%{
+                    transform:translateX(15px)
+                }50%{
+                    transform:translateX(-15px)
+                }100%{
+                    transform:translateX(15px)
+                }
+            }
+            #expand{
+                position:absolute;
+                left:50%;
+                top:50%;
+                border-radius:50%;
+                width:0px;
+                height:0px;
+                transition-duration:1s;
+                transition-property:width,height;
+                background:black;
+                transform:translate(-50%,-50%);
+                z-index:4;
+                cursor:pointer;
+                box-shadow:0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12),0 5px 5px -3px rgba(0,0,0,.2);
+                text-align:center;
+            }
+            #expand p,h2{
+                text-align:center;
+            }
+            #expand h2{
+                margin-top:64px;
+                font-size:40px;
+            }
+            #expand p{
+                font-size:20px;
+            }
+            #darken{
+                position:absolute;
+                top:0px;
+                left:0px;
+                width:100%;
+                height:100vh;
+                z-index:3;
+                background:rgba(0,0,0,0);
+                display:none;
+                transition:background 1s;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>爸爸，生日快乐！</h1>
+        <div id = "expand"></div>
+        <div id = "darken"></div>
+        <script>
+            function drawBalloon(ctx,color) {
+                ctx.beginPath();
+                var s = .6;
+                ctx.moveTo(70 * s, 150 * s);
+                ctx.bezierCurveTo(32 * s, 260 * s, 154 * s, 238 * s, 82 * s, 341 * s);
+                ctx.stroke();
+                
+                ctx.beginPath();
+                ctx.arc(50, 50, 50, 0, Math.PI*2, true); 
+                ctx.closePath();
+                ctx.fillStyle = color;
+                ctx.fill();
+                
+                ctx.fillStyle="black"
+                ctx.font = "12px Noto Sans SC Sliced";
+                ctx.textAlign="center"
+                ctx.fillText("点我",50,50);
+            }
+            var balloon = function(color){
+                var canvas = document.createElement("canvas");
+                canvas.width = "100";
+                canvas.height = "204";
+                var ctx = canvas.getContext("2d");
+                drawBalloon(ctx,color);
+                document.body.appendChild(canvas);
+                return canvas;
+            }
+            function fullHeight(el) {
+              var height = el.offsetHeight;
+              var style = getComputedStyle(el);
+
+              height += parseInt(style.marginTop) + parseInt(style.marginBottom);
+              return height;
+            }
+            var colors = ["#258039","#F5BE41","#31A9B8","#CF3721"];
+            var strings = ["<h2>我爱你。。。</h2><p>因为你很好玩</p>","<h2>我爱你。。。</h2><p>因为你工作很努力</p>","<h2>我爱你。。。</h2><p>因为你做的好吃的很好吃</p>","<h2>身体健康！</h2>","<h2>生日快乐！</h2>","<h2>身体健康！</h2>","<h2>一切顺利！</h2>","<h2>我爱你。。。</h2><p>因为晚上一起看电视很好玩</p>","<h2>我爱你。。。</h2><p>因为你对我很关心</p>"];
+            var width = document.body.offsetWidth;
+            var height = document.body.offsetHeight;
+            var hheight = fullHeight(document.body.querySelector("h1"));
+            var expand = document.getElementById("expand");
+            var darken = document.getElementById("darken")
+            for(var i = 0; i < 9; i++){
+                var b = balloon(colors[(i%4)]);
+                b.style.position="absolute";
+                b.style.left=Math.random()*(width-100)+"px";
+                b.style.top=(Math.random()*(height-204-hheight))+hheight+"px";
+                b.style.animation="wave "+(Math.round(Math.random()*5)+1)+"s infinite";
+                b.id="b"+i;
+                b["data-color"]=colors[(i%4)]
+                b.addEventListener("click",function(event){
+                    this.style.top="calc(50% - 50px)";
+                    this.style.left="calc(50% - 50px)";
+                    darken.style.display="block";
+                    darken.style.background="rgba(0,0,0,0.5)"
+                    setTimeout(function(){
+                        expand.style.visibility="visible";
+                        expand.style.height="600px";
+                        expand.style.width="600px";
+                        console.log(getComputedStyle(event.target).background)
+                        expand.style.background=event.target["data-color"];
+                        var index = Math.round(Math.random()*(strings.length-1))
+                        expand.innerHTML=strings[index]+"（如果你点一下这个气球就会炸掉）";
+                        strings.splice(index,1);
+                        expand.addEventListener("click",function(){
+                            expand.style.width="0px";
+                            darken.style.display="none";
+                            darken.style.background="rgba(0,0,0,0)"
+                            expand.style.height="0px";
+                            expand.style.visibility="hidden";
+                            event.target.style.display="none"
+                        })
+                    },1000)
+                })
+            }
+        </script>
+    </body>
+</html>
