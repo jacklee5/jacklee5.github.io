@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Catch Jimin's Jams</title>
+        <meta charset = "utf-8">
+        <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+        <style>
+            body{
+                margin:0px;
+                background:url('nojams.jpg');
+                overflow:hidden;
+            }
+            #jimin{
+                position:absolute;
+                top:-5%;
+                left:-5%;
+                width:110%;
+                height:110%;
+                transition:all 1s;
+                z-index:2;
+            }
+            @keyframes shake {
+                0% { -webkit-transform: translate(2px, 1px) rotate(0deg); }
+                10% { -webkit-transform: translate(-1px, -2px) rotate(-1deg); }
+                20% { -webkit-transform: translate(-3px, 0px) rotate(1deg); }
+                30% { -webkit-transform: translate(0px, 2px) rotate(0deg); }
+                40% { -webkit-transform: translate(1px, -1px) rotate(1deg); }
+                50% { -webkit-transform: translate(-1px, 2px) rotate(-1deg); }
+                60% { -webkit-transform: translate(-3px, 1px) rotate(0deg); }
+                70% { -webkit-transform: translate(2px, 1px) rotate(-1deg); }
+                80% { -webkit-transform: translate(-1px, -1px) rotate(1deg); }
+                90% { -webkit-transform: translate(2px, 2px) rotate(0deg); }
+                100% { -webkit-transform: translate(1px, -2px) rotate(-1deg); }
+            }
+            #game{
+                width:100%;
+                height:100%;
+                font-family:"Press Start 2P",cursive;
+                display:none;
+            }
+            #instructions{
+                position:absolute;
+                top:50%;
+                left:50%;
+                transform:translate(-50%,-50%);
+                text-transform:uppercase;
+                white-space: nowrap;
+                text-align: center;
+            }
+            #player{
+                position:absolute;
+                bottom:8%;
+                left:44%;
+            }
+            .jam{
+                position:absolute;
+                top:0px;
+                left:0px;
+                width:7.5%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "game">
+            <div id = "instructions">
+                <h1>Catch Jimin's Jams!</h1>
+                <p>(Left and right arrow keys to move)</p>
+                <p>avoid any falling rapmons</p>
+            </div>
+            <img width = "12%" id = "player" src = "player.png">
+        </div>
+        <script>
+        var NOJAMS = "you_got_no_jams.mp3"
+        var playSound = function(file){
+            var snd1  = new Audio();
+            var src1  = document.createElement("source");
+            src1.type = "audio/mpeg";
+            src1.src  = file;
+            snd1.appendChild(src1);
+            snd1.play();
+        }
+        for(var i = 0; i < 5; i ++){
+            setTimeout(function(){playSound(NOJAMS)},i*50)
+        }
+        var Jam = function(x,y,vel,id){
+            this.x = x;
+            this.y = y;
+            this.vel = vel;
+            this.id = id;
+        }
+        Jam.prototype.draw = function(){
+            document.body.innerHTML+="<img id = '"+this.id+"' style = 'position:absolute;top:"+this.x+"px;left:"+this.y+"px;' class = 'jam' src = 'jam.png'>"
+        }
+        Jam.prototype.update = function(){
+            el = document.getElementById(this.id);
+            this.y+=this.vel;
+            el.style.position="absolute";
+            el.style.top=this.y+"px";
+            if(el.offsetTop>document.body.offsetHeight){
+                el.style.left=Math.random()*document.body.offsetWidth+"px";
+                this.y=-1*el.offsetHeight;
+                this.vel=Math.random()*10;
+            }
+        }
+        setTimeout(function(){
+            document.body.style.background="black";
+            document.body.innerHTML+="<img id = 'jimin' src = 'jimin.jpg'>"
+            document.getElementById("jimin").style.animation="shake .5s infinite"
+            setTimeout(function(){
+                document.getElementById("jimin").style.opacity=0;
+                document.getElementById("game").style.display="block";
+                document.body.style.background="url('background.png')"
+                document.body.style.width="100vw";
+                document.body.style.height="100vh";
+                document.body.style.backgroundSize="contain";
+            },2000)
+            setTimeout(function(){
+                document.getElementById("jimin").style.display="none";
+                var LEFT = 37;
+                var RIGHT = 39;
+                var player = document.getElementById("player");
+                console.log(player)
+                var x = player.getBoundingClientRect().left;
+                var keys = [];
+                var jams = [];
+                var jam1 = new Jam(50,50,5,"jam1");
+                jam1.draw();
+                document.body.addEventListener("keydown",function(e){
+                    keys[e.keyCode]=true;
+                });
+                document.body.addEventListener("keyup",function(e){
+                    keys[e.keyCode]=false;
+                });
+                var draw = function(){
+                    jam1.update();
+                    if(keys[LEFT]===true){
+                        x-=5;
+                        player.style.position="absolute";
+                        player.style.left=x+"px";
+                        
+                    }
+                    if(keys[RIGHT]===true){
+                        x+=5;
+                        player.style.position="absolute";
+                        player.style.left=x+"px";
+                    }
+                    requestAnimationFrame(draw);
+                };
+                requestAnimationFrame(draw);
+            },3000)
+        },3500)
+        </script>
+    </body>
+</html>

@@ -68,11 +68,21 @@
                 ding.style.position="absolute";
                 if(dPos.top+dPos.height>height||dPos.top<0){
                     yInc*=-1;
-                    document.getElementById('dingdonger').play();
+                    var snd1  = new Audio();
+                    var src1  = document.createElement("source");
+                    src1.type = "audio/mpeg";
+                    src1.src  = "ding_d__g.mp3";
+                    snd1.appendChild(src1);
+                    snd1.play();
                 }
                 if(dPos.left+dPos.width>width||dPos.left<0){
                     xInc*=-1;
-                    document.getElementById('dingdonger').play();
+                    var snd1  = new Audio();
+                    var src1  = document.createElement("source");
+                    src1.type = "audio/mpeg";
+                    src1.src  = "ding_d__g.mp3";
+                    snd1.appendChild(src1);
+                    snd1.play();
                 }
                 y+=yInc;
                 x+=xInc;
@@ -82,7 +92,12 @@
             };
             dingdong(0,0,Math.random()*50,Math.random()*50,0);
             document.body.addEventListener("click",function(event){
-                document.getElementById('dingdonger').play();
+                var snd1  = new Audio();
+                var src1  = document.createElement("source");
+                src1.type = "audio/mpeg";
+                src1.src  = "ding_d__g.mp3";
+                snd1.appendChild(src1);
+                snd1.play();
                 var xInc = Math.random()*50;
                 var yInc = Math.random()*50;
                 document.body.innerHTML+="<h1 class = 'ding'>DIIINNNNGGG DDODOOOONNNGGGG</h1>";
