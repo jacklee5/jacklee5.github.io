@@ -90,7 +90,7 @@
                 ding.style.left=x+"px";
                 setTimeout(function(){dingdong(x,y,xInc,yInc,index)},30);
             };
-            dingdong(0,0,Math.random()*10,Math.random()*10,0);
+            dingdong(0,0,Math.random()*30,Math.random()*30,0);
             document.body.addEventListener("click",function(event){
                 var snd1  = new Audio();
                 var src1  = document.createElement("source");
@@ -98,8 +98,8 @@
                 src1.src  = "ding_d__g.mp3";
                 snd1.appendChild(src1);
                 snd1.play();
-                var xInc = Math.random()*10;
-                var yInc = Math.random()*10;
+                var xInc = Math.random()*30;
+                var yInc = Math.random()*30;
                 document.body.innerHTML+="<h1 class = 'ding'>DIIINNNNGGG DDODOOOONNNGGGG</h1>";
                 dingdong(event.clientX-xInc,event.clientY-yInc,xInc,yInc,numdings);
                 numdings++;
