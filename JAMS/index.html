@@ -92,9 +92,7 @@
             snd1.appendChild(src1);
             snd1.play();
         }
-        for(var i = 0; i < 5; i ++){
-            setTimeout(function(){playSound(NOJAMS)},i*50)
-        }
+        playSound(NOJAMS);
         var Jam = function(x,y,vel,id){
             this.x = x;
             this.y = y;
