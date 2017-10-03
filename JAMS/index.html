@@ -203,13 +203,13 @@
                 }, 10000)
                 var draw = function(){
                     if(pSpeed!=0){
-                        for(var i = 0; i < rms; i ++){
-                            rMs[i].update();
-                        }
                         for(var i = 0; i < jams.length; i ++){
                             jams[i].update();
                         }
                     }
+                    for(var i = 0; i < rms; i ++){
+                            rMs[i].update();
+                        }
                     if(keys[LEFT]===true){
                         x-=pSpeed;
                     }
