@@ -1,121 +1,98 @@
-<!DOCTYPE HTML>
 <html>
     <head>
-        <title>DING DONG</title>
-        <meta charset = "utf-8">
-        <link href="https://fonts.googleapis.com/css?family=Zeyada" rel="stylesheet">
-        <style>
-            h1{
-                animation:dingdong 2s infinite;
-                font-family:"Zeyada";
-                margin:0px;
-                font-size:40px;
-                overflow:hidden;
-                white-space:nowrap;
-                z-index:3;
-            }
-            body{
-                height:100vh;
-                width:100%;
-                margin:0px;
-                overflow:hidden;
-                background:url('ding%20dong.jpg');
-                cursor:none;
-            }
-            @keyframes dingdong{
-                0%{
-                    color:red;
-                }16%{
-                    color:orange;
-                }32%{
-                    color:yellow;
-                }48%{
-                    color:green;
-                }64%{
-                    color:blue;
-                }80%{
-                    color:indigo;
-                }100%{
-                    color:purple;
-                }
-            }
-            #container{
-                width:100%;
-                height:100%;
-            }
-            audio{
-                display:none;
-            }
-        </style>
+        <title>undefined Website</title>
+        <link rel = "stylesheet" href = "style.css">
+        <link href="https://fonts.googleapis.com/css?family=Chewy|Roboto:400,500,700,700i" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Product+Sans" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet">
     </head>
+    
     <body>
-        <audio controls id = "dingdonger">
-            <source  src="ding_d__g.mp3" type="audio/mpeg">
-            Your browser does not support audio.
-        </audio>
-        <div id = "container">
-            <img id = "dong" src = 'ding%20dong.jpg' height = "50">
+        <div id = "header">
+            <h1 onclick = "showPage(0)">Jack's Webpage</h1>
+            <nav>
+                <a>About</a>
+                <a>Favorites</a>
+                <a>Links</a>
+            </nav>
         </div>
-        <h1 class = "ding">DIIINNNNGGG DDODOOOONNNGGGG</h1>
+        <div class = "page start">
+            <header><h1>Jack Lee</h1></header>
+        </div>
+        <div class = "page">
+            <h1>About Me</h1>
+            <p>Hi, my name is Jack. I'm a freshman in ATCS. I'm not really sure what to say about myself except that I like to code in HTML/CSS/JS. I also know how to use Android Studio, as well as knowing a little bit of Python. Things I say a lot are HEY STOB IT, and REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE</p>
+        </div>
+        <div class = "page">
+            <h1>Favorite Things</h1>
+            <div class = "card">
+                <img src = "http://southasianhealthsolution.org/wp-content/uploads/2015/09/rice.jpg">
+                <div class = "text">
+                    <p>Food</p>
+                    <h2>Rice</h2>
+                </div>
+                <a href = "https://en.wikipedia.org/wiki/Rice" target = "_blank" class = "more">more<i class = "material-icons">open_in_new</i></a>
+            </div>
+            <div class = "card">
+                <img src = "http://it-school.com.ua/img/pics/javascript-logo.png">
+                <div class = "text">
+                    <p>Coding Language</p>
+                    <h2>JavaScript</h2>
+                </div>
+                <a href = "https://www.javascript.com/" target = "_blank" class = "more">more<i class = "material-icons">open_in_new</i></a>
+            </div>
+            <div class = "card">
+                <img src = "https://us.123rf.com/450wm/pixelsaway/pixelsaway0905/pixelsaway090500074/4934472-text-without-sense-produced-by-a-faulty-software-or-user-mistake--computer-gibberish-printout-on-whi.jpg?ver=6">
+                <div class = "text">
+                    <p>Language</p>
+                    <h2>Nonesense</h2>
+                </div>
+                <a href = "http://blank.org" target = "_blank" class = "more">more<i class = "material-icons">open_in_new</i></a>
+            </div>
+            <div class = "card">
+                <b style = "width:100px;height:100px;display:inline-block;overflow:hidden;">REEEEEEEEEEEEEEEEEEEE EEEEEEEEEEEEEEEEE EEEEEEEEEEEEEEEEE EEEEEEEEEEEEEEEEE EEEEEEEEEEEEEEEEE EEEEEEEEEEEEEEEEE</b>
+                <div class = "text">
+                    <p>Sound</p>
+                    <h2>REEEEEEEEEEEEEEEEEEEEEEEEE</h2>
+                </div>
+            </div>
+            <div class = "card">
+                <img src = "https://s-media-cache-ak0.pinimg.com/originals/77/97/25/77972521f22736e87c5f04e3ee43d637.png">
+                <div class = "text">
+                    <p>Activity</p>
+                    <h2>Sleep</h2>
+                </div>
+                <a href = "https://en.wikipedia.org/wiki/Sleep" target = "_blank" class = "more">more<i class = "material-icons">open_in_new</i></a>
+            </div>
+        </div>
+        <div class = "page">
+            <h1>Links</h1>
+            <ul>
+                <li><a href = "https://www.edmodo.com">https://has.bad.styling</a><br></li>
+                <li><a href = "https://www.khanacademy.org/login">Learny thingy</a><br></li>
+                <li><a href = "https://classroom.udacity.com/me">Other learny thingy</a><br></li>
+                <li><a href = "https://material.google.com/#">Material Design Stuff</a><br></li>
+                <li><a href = "https://www.youtube.com/watch?v=5ZmjzZAVfsI&list=LL4X3T1Ddqj-r50tzRjURvqA&index=15">Art</a></li>
+            </ul>
+        </div>
         <script>
-            var dings = document.getElementsByClassName("ding");
-            var numdings = 1;
-            var dingdong = function(x,y,xInc,yInc,index){
-                var width = document.body.offsetWidth;
-                var height = document.body.offsetHeight;
-                var ding = document.getElementsByClassName("ding")[index];
-                var dPos = ding.getBoundingClientRect();
-                ding.style.position="absolute";
-                if(dPos.top+dPos.height>height||dPos.top<0){
-                    yInc*=-1;
-                    var snd1  = new Audio();
-                    var src1  = document.createElement("source");
-                    src1.type = "audio/mpeg";
-                    src1.src  = "ding_d__g.mp3";
-                    snd1.appendChild(src1);
-                    snd1.play();
+            var pages = document.querySelectorAll(".page");
+            var active = 0;
+            var navLinks = document.querySelectorAll("nav a")
+            var showPage = function(index){
+                for(var i = 0; i < pages.length; i++){
+                    pages[i].style.display="none"
                 }
-                if(dPos.left+dPos.width>width||dPos.left<0){
-                    xInc*=-1;
-                    var snd1  = new Audio();
-                    var src1  = document.createElement("source");
-                    src1.type = "audio/mpeg";
-                    src1.src  = "ding_d__g.mp3";
-                    snd1.appendChild(src1);
-                    snd1.play();
-                }
-                y+=yInc;
-                x+=xInc;
-                ding.style.top=y+"px";
-                ding.style.left=x+"px";
-                setTimeout(function(){dingdong(x,y,xInc,yInc,index)},30);
-            };
-            dingdong(0,0,Math.random()*30,Math.random()*30,0);
-            document.body.addEventListener("click",function(event){
-                var snd1  = new Audio();
-                var src1  = document.createElement("source");
-                src1.type = "audio/mpeg";
-                src1.src  = "ding_d__g.mp3";
-                snd1.appendChild(src1);
-                snd1.play();
-                var xInc = Math.random()*30;
-                var yInc = Math.random()*30;
-                document.body.innerHTML+="<h1 class = 'ding'>DIIINNNNGGG DDODOOOONNNGGGG</h1>";
-                dingdong(event.clientX-xInc,event.clientY-yInc,xInc,yInc,numdings);
-                numdings++;
-                var dong = document.getElementById("dong");
-                document.getElementById("container").addEventListener("mousemove",function(event){
-                    dong.style.position="absolute";
-                    dong.style.top=event.clientY+"px";
-                    dong.style.left=event.clientX+"px";
-            })
-            })
-            var dong = document.getElementById("dong");
-            document.getElementById("container").addEventListener("mousemove",function(event){
-                dong.style.position="absolute";
-                dong.style.top=event.clientY+"px";
-                dong.style.left=event.clientX+"px";
-            })
+                pages[index].style.display="block"
+            }
+            var navLink = function(index){
+                navLinks[index].addEventListener("click",function(){
+                    showPage(index+1)
+                })
+            }
+            for(var i = 0; i < navLinks.length; i++){
+                navLink(i)
+            }
         </script>
     </body>
 </html>
