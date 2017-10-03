@@ -155,6 +155,7 @@
             document.body.style.background="black";
             document.body.innerHTML+="<img id = 'jimin' src = 'jimin.jpg'>"
             document.getElementById("jimin").style.animation="shake .5s infinite"
+            playSound("triggered.mp3");
             setTimeout(function(){
                 setTimeout(function(){
                     document.getElementById("instructions").style.opacity=0;
