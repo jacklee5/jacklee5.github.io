@@ -172,7 +172,9 @@
             playSound("triggered.mp3");
             setTimeout(function(){
                 setTimeout(function(){
-                    document.getElementById("instructions").style.opacity=0;
+                    if (pSpeed != 0){
+                        document.getElementById("instructions").style.opacity=0;
+                    }
                 },2000)
                 document.getElementById("jimin").style.opacity=0;
                 document.getElementById("game").style.display="block";
@@ -240,19 +242,29 @@
                         instructions = document.getElementById("instructions");
                         instructions.style.opacity=1;
                         instructions.style.color="white";
-                        instructions.innerHTML="<h1>You lost!</h1>Oops Rapmonster got your jams again.<br> Well at least you collected "+jamsCaught+" jams before they got stolen again.<br> Reload to try again."
+                        instructions.innerHTML="<h1>You lost!</h1>Oops Rapmonster got your jams again.<br> Well at least you collected "+jamsCaught+" jams<br> before they got stolen again.<br> Reload to try again."
                         instructions.style.zIndex = "5"
-                        var highscore = firebase.database().ref('highscore');
-                        highscore.on('value', function(snapshot) {
-                          instructions.innerHTML+="<h2>Your score: "+jamsCaught;
-                          instructions.innerHTML+="<h2>Global highscore: "+snapshot.val();    
-                          if(jamsCaught > snapshot.val()){
-                              firebase.database().ref('highscore').set(jamsCaught);
+                        instructions.innerHTML+="<h2>Your score: "+jamsCaught+"</h2>";
+                        var hi = 0;
+                        var data = firebase.database().ref('data');
+                        var name = ""
+                        var hiName = ""
+                        data.once('value', function(snapshot) {
+                          if(jamsCaught > snapshot.val().highscore){
+                              name = prompt("You got a high score! What's your name?")
+                              firebase.database().ref('data/highscore/').set(jamsCaught);
+                              firebase.database().ref('data/name/').set(name);
                           }
+                          hi = snapshot.val().highscore;
+                          hiName = snapshot.val().name;
+                          instructions.innerHTML+="<h2 style = 'width:100vw;'>Global highscore: "+hi+" (by "+hiName+")</h2>";  
                         });
+                          
                     }
                     document.getElementById("player").style.left=x+"px";
-                    requestAnimationFrame(draw);
+                    if(pSpeed!=0){
+                        requestAnimationFrame(draw);
+                    }
                 };
                 requestAnimationFrame(draw);
             },2000)
