@@ -201,7 +201,7 @@
                     jams[i].draw();
                 }
                 for(var i = 0; i < rms; i ++){
-                    rMs.push(new Rm(Math.random()*document.body.offsetWidth,-1*jamHeight,Math.random()*10,"rm"+i))
+                    rMs.push(new Rm(Math.random()*document.body.offsetWidth,-1*jamHeight,Math.random()*8+2,"rm"+i))
                 }
                 for(var i = 0; i < rms; i ++){
                     rMs[i].draw();
@@ -213,7 +213,7 @@
                     keys[e.keyCode]=false;
                 });
                 setInterval(function(){
-                    rMs.push(new Rm(Math.random()*document.body.offsetWidth,-1*jamHeight,Math.random()*10,"rm"+rMs.length))
+                    rMs.push(new Rm(Math.random()*document.body.offsetWidth,-1*jamHeight,Math.random()*8+2,"rm"+rMs.length))
                     rMs[rMs.length-1].draw();
                     rms++;
                 }, 10000)
