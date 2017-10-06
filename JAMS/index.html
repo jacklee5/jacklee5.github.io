@@ -1,71 +1,62 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <title>Catch Jimin's Jams</title>
-        <meta charset = "utf-8">
-        <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
-        <style>
-            body{
-                margin:0px;
-                background:url('nojams.jpg');
-                overflow:hidden;
+
+<head>
+    <title>Catch Jimin's Jams</title>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <style>
+        body {
+            margin: 0px;
+            background: url('nojams.jpg');
+            overflow: hidden;
+        }
+
+        #jimin {
+            position: absolute;
+            top: -5%;
+            left: -5%;
+            width: 110%;
+            height: 110%;
+            transition: all 1s;
+            z-index: 2;
+        }
+
+        @keyframes shake {
+            0% {
+                -webkit-transform: translate(2px, 1px) rotate(0deg);
             }
-            #jimin{
-                position:absolute;
-                top:-5%;
-                left:-5%;
-                width:110%;
-                height:110%;
-                transition:all 1s;
-                z-index:2;
+            10% {
+                -webkit-transform: translate(-1px, -2px) rotate(-1deg);
             }
-            @keyframes shake {
-                0% { -webkit-transform: translate(2px, 1px) rotate(0deg); }
-                10% { -webkit-transform: translate(-1px, -2px) rotate(-1deg); }
-                20% { -webkit-transform: translate(-3px, 0px) rotate(1deg); }
-                30% { -webkit-transform: translate(0px, 2px) rotate(0deg); }
-                40% { -webkit-transform: translate(1px, -1px) rotate(1deg); }
-                50% { -webkit-transform: translate(-1px, 2px) rotate(-1deg); }
-                60% { -webkit-transform: translate(-3px, 1px) rotate(0deg); }
-                70% { -webkit-transform: translate(2px, 1px) rotate(-1deg); }
-                80% { -webkit-transform: translate(-1px, -1px) rotate(1deg); }
-                90% { -webkit-transform: translate(2px, 2px) rotate(0deg); }
-                100% { -webkit-transform: translate(1px, -2px) rotate(-1deg); }
+            20% {
+                -webkit-transform: translate(-3px, 0px) rotate(1deg);
             }
-            #game{
-                width:100%;
-                height:100%;
-                font-family:"Press Start 2P",cursive;
-                display:none;
+            30% {
+                -webkit-transform: translate(0px, 2px) rotate(0deg);
             }
-            #instructions{
-                position:absolute;
-                top:50%;
-                left:50%;
-                transform:translate(-50%,-50%);
-                text-transform:uppercase;
-                text-align: center;
+            40% {
+                -webkit-transform: translate(1px, -1px) rotate(1deg);
             }
-            #player{
-                position:absolute;
-                bottom:8%;
-                left:44%;
+            50% {
+                -webkit-transform: translate(-1px, 2px) rotate(-1deg);
             }
-            .jam{
-                position:absolute;
-                top:0px;
-                left:0px;
-                width:2.5%;
+            60% {
+                -webkit-transform: translate(-3px, 1px) rotate(0deg);
             }
-            #instructions{
-                transition:all 1s;
+            70% {
+                -webkit-transform: translate(2px, 1px) rotate(-1deg);
             }
-            .rm{
-                position:absolute;
-                top:0px;
-                left:0px;
-                width:5%;
+            80% {
+                -webkit-transform: translate(-1px, -1px) rotate(1deg);
             }
+            90% {
+                -webkit-transform: translate(2px, 2px) rotate(0deg);
+            }
+            100% {
+                -webkit-transform: translate(1px, -2px) rotate(-1deg);
+            }
+<<<<<<< HEAD
         </style>
     </head>
     <body>
@@ -80,6 +71,64 @@
         </div>
         <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
         <script>
+=======
+        }
+
+        #game {
+            width: 100%;
+            height: 100%;
+            font-family: "Press Start 2P", cursive;
+            display: none;
+        }
+
+        #instructions {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        #player {
+            position: absolute;
+            bottom: 8%;
+            left: 44%;
+        }
+
+        .jam {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 2.5%;
+        }
+
+        #instructions {
+            transition: all 1s;
+        }
+
+        .rm {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 5%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="game">
+        <p style="padding-left:16px;z-index:500000000;">JAMS CAUGHT: <span id="score">0</span></p>
+        <div id="instructions">
+            <h1>Catch Jimin's Jams!</h1>
+            <p>(Left and right arrow keys to move)</p>
+            <p>avoid any falling rapmons</p>
+        </div>
+        <img width="5%" id="player" src="player.png">
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
+    <script>
+>>>>>>> b6e70d0a9f2422cc959218272915e36a22180caf
         // Initialize Firebase
         var config = {
             apiKey: "AIzaSyD3OxsJLgK302zZ_fMTgRKfE_LHdg3y5iA",
@@ -91,80 +140,90 @@
         };
         firebase.initializeApp(config);
         var database = firebase.database()
+<<<<<<< HEAD
         </script>
         <script>
+=======
+    </script>
+    <script>
+>>>>>>> b6e70d0a9f2422cc959218272915e36a22180caf
         var NOJAMS = "you_got_no_jams.mp3";
         var jamsCaught = 0;
         var NUMJAMS = 5;
         var rms = 5;
         var pSpeed = 10;
-        var playSound = function(file){
-            var snd1  = new Audio();
-            var src1  = document.createElement("source");
+        var playSound = function(file) {
+            var snd1 = new Audio();
+            var src1 = document.createElement("source");
             src1.type = "audio/mpeg";
-            src1.src  = file;
+            src1.src = file;
             snd1.appendChild(src1);
             snd1.play();
         }
         playSound(NOJAMS);
+<<<<<<< HEAD
         var Jam = function(x,y,vel,id){
+=======
+        var Jam = function(x, y, vel, id) {
+>>>>>>> b6e70d0a9f2422cc959218272915e36a22180caf
             this.x = x;
             this.y = y;
             this.vel = vel;
             this.id = id;
         }
-        Jam.prototype.draw = function(){
-            document.body.innerHTML+="<img id = '"+this.id+"' style = 'position:absolute;top:"+this.y+"px;left:"+this.x+"px;' class = 'jam' src = 'jam.png'>"
+        Jam.prototype.draw = function() {
+            document.body.innerHTML += "<img id = '" + this.id + "' style = 'position:absolute;top:" + this.y + "px;left:" + this.x + "px;' class = 'jam' src = 'jam.png'>"
         }
-        Jam.prototype.update = function(){
+        Jam.prototype.update = function() {
             el = document.getElementById(this.id);
             player = document.getElementById("player")
-            this.y+=this.vel;
-            el.style.position="absolute";
-            el.style.top=this.y+"px";
-            if(el.offsetTop+el.offsetHeight>player.offsetTop&&el.offsetLeft+el.offsetWidth>player.offsetLeft&&el.offsetLeft<player.offsetWidth+player.offsetLeft&&el.offsetTop<player.offsetTop+player.offsetHeight){
-                this.y=-1*el.offsetHeight;
-                el.style.left=Math.random()*document.body.offsetWidth+"px";
-                this.vel=Math.random()*10+2;
-                el.style.top = -1*el.offsetHeight+"px";
-                jamsCaught ++;
+            this.y += this.vel;
+            el.style.position = "absolute";
+            el.style.top = this.y + "px";
+            if (el.offsetTop + el.offsetHeight > player.offsetTop && el.offsetLeft + el.offsetWidth > player.offsetLeft && el.offsetLeft < player.offsetWidth + player.offsetLeft && el.offsetTop < player.offsetTop + player.offsetHeight) {
+                this.y = -1 * el.offsetHeight;
+                el.style.left = Math.random() * document.body.offsetWidth + "px";
+                this.vel = Math.random() * 10 + 2;
+                el.style.top = -1 * el.offsetHeight + "px";
+                jamsCaught++;
                 document.getElementById("score").innerHTML = jamsCaught;
             }
-            if(el.offsetTop>document.body.offsetHeight){
-                this.y=-1*el.offsetHeight;
-                el.style.left=Math.random()*document.body.offsetWidth+"px";
-                this.vel=Math.random()*10+2;
+            if (el.offsetTop > document.body.offsetHeight) {
+                this.y = -1 * el.offsetHeight;
+                el.style.left = Math.random() * document.body.offsetWidth + "px";
+                this.vel = Math.random() * 10 + 2;
             }
         }
-        var Rm = function(x,y,vel,id){
+        var Rm = function(x, y, vel, id) {
             this.x = x;
             this.y = y;
             this.vel = vel;
             this.id = id;
         }
-        Rm.prototype.draw = function(){
-            document.body.innerHTML+="<img id = '"+this.id+"' style = 'position:absolute;top:"+this.y+"px;left:"+this.x+"px;' class = 'rm' src = 'rapmonster.png'>"
+        Rm.prototype.draw = function() {
+            document.body.innerHTML += "<img id = '" + this.id + "' style = 'position:absolute;top:" + this.y + "px;left:" + this.x + "px;' class = 'rm' src = 'rapmonster.png'>"
         }
-        Rm.prototype.update = function(){
+        Rm.prototype.update = function() {
             el = document.getElementById(this.id);
             player = document.getElementById("player")
-            this.y+=this.vel;
-            el.style.position="absolute";
-            el.style.top=this.y+"px";
-            if(el.offsetTop+el.offsetHeight>player.offsetTop&&el.offsetLeft+el.offsetWidth>player.offsetLeft&&el.offsetLeft<player.offsetWidth+player.offsetLeft&&el.offsetTop<player.offsetTop+player.offsetHeight){
-                this.y=-1*el.offsetHeight;
-                el.style.left=Math.random()*document.body.offsetWidth+"px";
-                this.vel=0;
-                el.style.top = -1*el.offsetHeight+"px";
-                document.body.style.background="black";
+            this.y += this.vel;
+            el.style.position = "absolute";
+            el.style.top = this.y + "px";
+            if (el.offsetTop + el.offsetHeight > player.offsetTop && el.offsetLeft + el.offsetWidth > player.offsetLeft && el.offsetLeft < player.offsetWidth + player.offsetLeft && el.offsetTop < player.offsetTop + player.offsetHeight) {
+                this.y = -1 * el.offsetHeight;
+                el.style.left = Math.random() * document.body.offsetWidth + "px";
+                this.vel = 0;
+                el.style.top = -1 * el.offsetHeight + "px";
+                document.body.style.background = "black";
                 pSpeed = 0;
             }
-            if(el.offsetTop>document.body.offsetHeight){
-                this.y=-1*el.offsetHeight;
-                el.style.left=Math.random()*document.body.offsetWidth+"px";
-                this.vel=Math.random()*10;
+            if (el.offsetTop > document.body.offsetHeight) {
+                this.y = -1 * el.offsetHeight;
+                el.style.left = Math.random() * document.body.offsetWidth + "px";
+                this.vel = Math.random() * 10;
             }
         }
+<<<<<<< HEAD
         setTimeout(function(){
             document.body.style.background="black";
             document.body.innerHTML+="<img id = 'jimin' src = 'jimin.jpg'>"
@@ -183,6 +242,26 @@
                 document.body.style.height="100vh";
                 document.body.style.backgroundSize="contain";
                 document.getElementById("jimin").style.display="none";
+=======
+        setTimeout(function() {
+            document.body.style.background = "black";
+            document.body.innerHTML += "<img id = 'jimin' src = 'jimin.jpg'>"
+            document.getElementById("jimin").style.animation = "shake .5s infinite"
+            playSound("triggered.mp3");
+            setTimeout(function() {
+                setTimeout(function() {
+                    if (pSpeed != 0) {
+                        document.getElementById("instructions").style.opacity = 0;
+                    }
+                }, 2000)
+                document.getElementById("jimin").style.opacity = 0;
+                document.getElementById("game").style.display = "block";
+                document.body.style.background = "url('background.png')"
+                document.body.style.width = "100vw";
+                document.body.style.height = "100vh";
+                document.body.style.backgroundSize = "contain";
+                document.getElementById("jimin").style.display = "none";
+>>>>>>> b6e70d0a9f2422cc959218272915e36a22180caf
                 var LEFT = 37;
                 var RIGHT = 39;
                 var player = document.getElementById("player");
@@ -190,28 +269,29 @@
                 var keys = [];
                 var jams = [];
                 var rMs = [];
-                document.body.innerHTML+="<img id = 'fake-jam' class = 'jam' src = 'jam.png'>"
+                document.body.innerHTML += "<img id = 'fake-jam' class = 'jam' src = 'jam.png'>"
                 fakeJam = document.getElementById("fake-jam");
                 jamHeight = fakeJam.offsetHeight;
-                fakeJam.style.display="none"
-                for(var i = 0; i < NUMJAMS; i ++){
-                    jams.push(new Jam(Math.random()*document.body.offsetWidth,-1*jamHeight,Math.random()*10+2,"jam"+i))
+                fakeJam.style.display = "none"
+                for (var i = 0; i < NUMJAMS; i++) {
+                    jams.push(new Jam(Math.random() * document.body.offsetWidth, -1 * jamHeight, Math.random() * 10 + 2, "jam" + i))
                 }
-                for(var i = 0; i < NUMJAMS; i ++){
+                for (var i = 0; i < NUMJAMS; i++) {
                     jams[i].draw();
                 }
-                for(var i = 0; i < rms; i ++){
-                    rMs.push(new Rm(Math.random()*document.body.offsetWidth,-1*jamHeight,Math.random()*10,"rm"+i))
+                for (var i = 0; i < rms; i++) {
+                    rMs.push(new Rm(Math.random() * document.body.offsetWidth, -1 * jamHeight, Math.random() * 10, "rm" + i))
                 }
-                for(var i = 0; i < rms; i ++){
+                for (var i = 0; i < rms; i++) {
                     rMs[i].draw();
                 }
-                document.body.addEventListener("keydown",function(e){
-                    keys[e.keyCode]=true;
+                document.body.addEventListener("keydown", function(e) {
+                    keys[e.keyCode] = true;
                 });
-                document.body.addEventListener("keyup",function(e){
-                    keys[e.keyCode]=false;
+                document.body.addEventListener("keyup", function(e) {
+                    keys[e.keyCode] = false;
                 });
+<<<<<<< HEAD
                 setInterval(function(){
                     rMs.push(new Rm(Math.random()*document.body.offsetWidth,-1*jamHeight,Math.random()*10,"rm"+rMs.length))
                     rMs[rMs.length-1].draw();
@@ -228,28 +308,54 @@
                         }
                     if(keys[LEFT]===true){
                         x-=pSpeed;
+=======
+                setInterval(function() {
+                    rMs.push(new Rm(Math.random() * document.body.offsetWidth, -1 * jamHeight, Math.random() * 10, "rm" + rMs.length))
+                    rMs[rMs.length - 1].draw();
+                    rms++;
+                }, 10000)
+                var draw = function() {
+                    if (pSpeed != 0) {
+                        for (var i = 0; i < jams.length; i++) {
+                            jams[i].update();
+                        }
                     }
-                    if(keys[RIGHT]===true){
-                        x+=pSpeed;
+                    for (var i = 0; i < rms; i++) {
+                        rMs[i].update();
+>>>>>>> b6e70d0a9f2422cc959218272915e36a22180caf
                     }
-                    if(x>document.body.offsetWidth){
-                        x=0;
+                    if (keys[LEFT] === true) {
+                        x -= pSpeed;
                     }
-                    else if(x<0){
+                    if (keys[RIGHT] === true) {
+                        x += pSpeed;
+                    }
+                    if (x > document.body.offsetWidth) {
+                        x = 0;
+                    } else if (x < 0) {
                         x = document.body.offsetWidth;
                     }
-                    if(pSpeed===0){
+                    if (pSpeed === 0) {
                         instructions = document.getElementById("instructions");
+<<<<<<< HEAD
                         instructions.style.opacity=1;
                         instructions.style.color="white";
                         instructions.innerHTML="<h1>You lost!</h1>Oops Rapmonster got your jams again.<br> Well at least you collected "+jamsCaught+" jams<br> before they got stolen again.<br> Reload to try again."
                         instructions.style.zIndex = "5"
                         instructions.innerHTML+="<h2>Your score: "+jamsCaught+"</h2>";
+=======
+                        instructions.style.opacity = 1;
+                        instructions.style.color = "white";
+                        instructions.innerHTML = "<h1>You lost!</h1>Oops Rapmonster got your jams again.<br> Well at least you collected " + jamsCaught + " jams<br> before they got stolen again.<br> Reload to try again."
+                        instructions.style.zIndex = "5"
+                        instructions.innerHTML += "<h2>Your score: " + jamsCaught + "</h2>";
+>>>>>>> b6e70d0a9f2422cc959218272915e36a22180caf
                         var hi = 0;
                         var data = firebase.database().ref('data');
                         var name = ""
                         var hiName = ""
                         data.once('value', function(snapshot) {
+<<<<<<< HEAD
                           if(jamsCaught > snapshot.val().highscore){
                               name = prompt("You got a high score! What's your name?")
                               firebase.database().ref('data/highscore/').set(jamsCaught);
@@ -273,4 +379,36 @@
         },3500)
         </script>
     </body>
+=======
+                            if (jamsCaught > snapshot.val().highscore) {
+                                name = prompt("You got a high score! What's your name?")
+                                firebase.database().ref('data/highscore/').set(jamsCaught);
+                                firebase.database().ref('data/name/').set(name);
+                                hi = jamsCaught;
+                                hiName = name;
+                                instructions.innerHTML += "<h2 style = 'width:100vw;'>Global highscore: " + hi + " (by " + hiName + ")</h2>";
+                            }else{
+                                hi = snapshot.val().highscore;
+                                hiName = snapshot.val().name;
+                                instructions.innerHTML += "<h2 style = 'width:100vw;'>Global highscore: " + hi + " (by " + hiName + ")</h2>";
+                            }                            
+                        });
+                        firebase.database().ref('plays').once('value', function(snapshot) {
+                            plays = snapshot.val();
+                            firebase.database().ref('plays').set(plays + 1);
+                        });
+
+                    }
+                    document.getElementById("player").style.left = x + "px";
+                    if (pSpeed != 0) {
+                        requestAnimationFrame(draw);
+                    }
+                };
+                requestAnimationFrame(draw);
+            }, 2000)
+        }, 3500)
+    </script>
+</body>
+
+>>>>>>> b6e70d0a9f2422cc959218272915e36a22180caf
 </html>
