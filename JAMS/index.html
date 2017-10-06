@@ -56,22 +56,6 @@
             100% {
                 -webkit-transform: translate(1px, -2px) rotate(-1deg);
             }
-<<<<<<< HEAD
-        </style>
-    </head>
-    <body>
-        <div id = "game">
-            <p style = "padding-left:16px;z-index:500000000;">JAMS CAUGHT: <span id = "score">0</span></p>
-            <div id = "instructions">
-                <h1>Catch Jimin's Jams!</h1>
-                <p>(Left and right arrow keys to move)</p>
-                <p>avoid any falling rapmons</p>
-            </div>
-            <img width = "5%" id = "player" src = "player.png">
-        </div>
-        <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
-        <script>
-=======
         }
 
         #game {
@@ -128,7 +112,6 @@
     </div>
     <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
     <script>
->>>>>>> b6e70d0a9f2422cc959218272915e36a22180caf
         // Initialize Firebase
         var config = {
             apiKey: "AIzaSyD3OxsJLgK302zZ_fMTgRKfE_LHdg3y5iA",
@@ -140,13 +123,8 @@
         };
         firebase.initializeApp(config);
         var database = firebase.database()
-<<<<<<< HEAD
-        </script>
-        <script>
-=======
     </script>
     <script>
->>>>>>> b6e70d0a9f2422cc959218272915e36a22180caf
         var NOJAMS = "you_got_no_jams.mp3";
         var jamsCaught = 0;
         var NUMJAMS = 5;
@@ -161,11 +139,7 @@
             snd1.play();
         }
         playSound(NOJAMS);
-<<<<<<< HEAD
-        var Jam = function(x,y,vel,id){
-=======
         var Jam = function(x, y, vel, id) {
->>>>>>> b6e70d0a9f2422cc959218272915e36a22180caf
             this.x = x;
             this.y = y;
             this.vel = vel;
@@ -223,26 +197,6 @@
                 this.vel = Math.random() * 10;
             }
         }
-<<<<<<< HEAD
-        setTimeout(function(){
-            document.body.style.background="black";
-            document.body.innerHTML+="<img id = 'jimin' src = 'jimin.jpg'>"
-            document.getElementById("jimin").style.animation="shake .5s infinite"
-            playSound("triggered.mp3");
-            setTimeout(function(){
-                setTimeout(function(){
-                    if (pSpeed != 0){
-                        document.getElementById("instructions").style.opacity=0;
-                    }
-                },2000)
-                document.getElementById("jimin").style.opacity=0;
-                document.getElementById("game").style.display="block";
-                document.body.style.background="url('background.png')"
-                document.body.style.width="100vw";
-                document.body.style.height="100vh";
-                document.body.style.backgroundSize="contain";
-                document.getElementById("jimin").style.display="none";
-=======
         setTimeout(function() {
             document.body.style.background = "black";
             document.body.innerHTML += "<img id = 'jimin' src = 'jimin.jpg'>"
@@ -261,7 +215,6 @@
                 document.body.style.height = "100vh";
                 document.body.style.backgroundSize = "contain";
                 document.getElementById("jimin").style.display = "none";
->>>>>>> b6e70d0a9f2422cc959218272915e36a22180caf
                 var LEFT = 37;
                 var RIGHT = 39;
                 var player = document.getElementById("player");
@@ -291,24 +244,6 @@
                 document.body.addEventListener("keyup", function(e) {
                     keys[e.keyCode] = false;
                 });
-<<<<<<< HEAD
-                setInterval(function(){
-                    rMs.push(new Rm(Math.random()*document.body.offsetWidth,-1*jamHeight,Math.random()*10,"rm"+rMs.length))
-                    rMs[rMs.length-1].draw();
-                    rms++;
-                }, 10000)
-                var draw = function(){
-                    if(pSpeed!=0){
-                        for(var i = 0; i < jams.length; i ++){
-                            jams[i].update();
-                        }
-                    }
-                    for(var i = 0; i < rms; i ++){
-                            rMs[i].update();
-                        }
-                    if(keys[LEFT]===true){
-                        x-=pSpeed;
-=======
                 setInterval(function() {
                     rMs.push(new Rm(Math.random() * document.body.offsetWidth, -1 * jamHeight, Math.random() * 10, "rm" + rMs.length))
                     rMs[rMs.length - 1].draw();
@@ -322,7 +257,6 @@
                     }
                     for (var i = 0; i < rms; i++) {
                         rMs[i].update();
->>>>>>> b6e70d0a9f2422cc959218272915e36a22180caf
                     }
                     if (keys[LEFT] === true) {
                         x -= pSpeed;
@@ -337,49 +271,16 @@
                     }
                     if (pSpeed === 0) {
                         instructions = document.getElementById("instructions");
-<<<<<<< HEAD
-                        instructions.style.opacity=1;
-                        instructions.style.color="white";
-                        instructions.innerHTML="<h1>You lost!</h1>Oops Rapmonster got your jams again.<br> Well at least you collected "+jamsCaught+" jams<br> before they got stolen again.<br> Reload to try again."
-                        instructions.style.zIndex = "5"
-                        instructions.innerHTML+="<h2>Your score: "+jamsCaught+"</h2>";
-=======
                         instructions.style.opacity = 1;
                         instructions.style.color = "white";
                         instructions.innerHTML = "<h1>You lost!</h1>Oops Rapmonster got your jams again.<br> Well at least you collected " + jamsCaught + " jams<br> before they got stolen again.<br> Reload to try again."
                         instructions.style.zIndex = "5"
                         instructions.innerHTML += "<h2>Your score: " + jamsCaught + "</h2>";
->>>>>>> b6e70d0a9f2422cc959218272915e36a22180caf
                         var hi = 0;
                         var data = firebase.database().ref('data');
                         var name = ""
                         var hiName = ""
                         data.once('value', function(snapshot) {
-<<<<<<< HEAD
-                          if(jamsCaught > snapshot.val().highscore){
-                              name = prompt("You got a high score! What's your name?")
-                              firebase.database().ref('data/highscore/').set(jamsCaught);
-                              firebase.database().ref('data/name/').set(name);
-                          }
-                          hi = snapshot.val().highscore;
-                          hiName = snapshot.val().name;
-                          plays = snapshot.val().plays;
-                          firebase.database().ref('data/plays').set(plays+1);
-                          instructions.innerHTML+="<h2 style = 'width:100vw;'>Global highscore: "+hi+" (by "+hiName+")</h2>";  
-                        });
-                          
-                    }
-                    document.getElementById("player").style.left=x+"px";
-                    if(pSpeed!=0){
-                        requestAnimationFrame(draw);
-                    }
-                };
-                requestAnimationFrame(draw);
-            },2000)
-        },3500)
-        </script>
-    </body>
-=======
                             if (jamsCaught > snapshot.val().highscore) {
                                 name = prompt("You got a high score! What's your name?")
                                 firebase.database().ref('data/highscore/').set(jamsCaught);
@@ -410,5 +311,4 @@
     </script>
 </body>
 
->>>>>>> b6e70d0a9f2422cc959218272915e36a22180caf
 </html>
