@@ -285,10 +285,14 @@
                                 name = prompt("You got a high score! What's your name?")
                                 firebase.database().ref('data/highscore/').set(jamsCaught);
                                 firebase.database().ref('data/name/').set(name);
-                            }
-                            hi = snapshot.val().highscore;
-                            hiName = snapshot.val().name;
-                            instructions.innerHTML += "<h2 style = 'width:100vw;'>Global highscore: " + hi + " (by " + hiName + ")</h2>";
+                                hi = jamsCaught;
+                                hiName = name;
+                                instructions.innerHTML += "<h2 style = 'width:100vw;'>Global highscore: " + hi + " (by " + hiName + ")</h2>";
+                            }else{
+                                hi = snapshot.val().highscore;
+                                hiName = snapshot.val().name;
+                                instructions.innerHTML += "<h2 style = 'width:100vw;'>Global highscore: " + hi + " (by " + hiName + ")</h2>";
+                            }                            
                         });
                         firebase.database().ref('plays').once('value', function(snapshot) {
                             plays = snapshot.val();
