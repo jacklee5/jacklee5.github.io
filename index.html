@@ -12,7 +12,6 @@
             <h1 onclick = "showPage(0)">Jack's Webpage</h1>
             <nav>
                 <a>About</a>
-                <a>Favorites</a>
                 <a>Links</a>
                 <a>Projects</a>
             </nav>
@@ -22,49 +21,7 @@
         </div>
         <div class = "page">
             <h1>About Me</h1>
-            <p>Hi, my name is Jack. I'm a freshman in ATCS. I'm not really sure what to say about myself except that I like to code in HTML/CSS/JS. I also know how to use Android Studio, as well as knowing a little bit of Python. Things I say a lot are HEY STOB IT, and REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE</p>
-        </div>
-        <div class = "page">
-            <h1>Favorite Things</h1>
-            <div class = "card">
-                <img src = "http://southasianhealthsolution.org/wp-content/uploads/2015/09/rice.jpg">
-                <div class = "text">
-                    <p>Food</p>
-                    <h2>Rice</h2>
-                </div>
-                <a href = "https://en.wikipedia.org/wiki/Rice" target = "_blank" class = "more">more<i class = "material-icons">open_in_new</i></a>
-            </div>
-            <div class = "card">
-                <img src = "http://it-school.com.ua/img/pics/javascript-logo.png">
-                <div class = "text">
-                    <p>Coding Language</p>
-                    <h2>JavaScript</h2>
-                </div>
-                <a href = "https://www.javascript.com/" target = "_blank" class = "more">more<i class = "material-icons">open_in_new</i></a>
-            </div>
-            <div class = "card">
-                <img src = "https://us.123rf.com/450wm/pixelsaway/pixelsaway0905/pixelsaway090500074/4934472-text-without-sense-produced-by-a-faulty-software-or-user-mistake--computer-gibberish-printout-on-whi.jpg?ver=6">
-                <div class = "text">
-                    <p>Language</p>
-                    <h2>Nonesense</h2>
-                </div>
-                <a href = "http://blank.org" target = "_blank" class = "more">more<i class = "material-icons">open_in_new</i></a>
-            </div>
-            <div class = "card">
-                <b style = "width:100px;height:100px;display:inline-block;overflow:hidden;">REEEEEEEEEEEEEEEEEEEE EEEEEEEEEEEEEEEEE EEEEEEEEEEEEEEEEE EEEEEEEEEEEEEEEEE EEEEEEEEEEEEEEEEE EEEEEEEEEEEEEEEEE</b>
-                <div class = "text">
-                    <p>Sound</p>
-                    <h2>REEEEEEEEEEEEEEEEEEEEEEEEE</h2>
-                </div>
-            </div>
-            <div class = "card">
-                <img src = "https://s-media-cache-ak0.pinimg.com/originals/77/97/25/77972521f22736e87c5f04e3ee43d637.png">
-                <div class = "text">
-                    <p>Activity</p>
-                    <h2>Sleep</h2>
-                </div>
-                <a href = "https://en.wikipedia.org/wiki/Sleep" target = "_blank" class = "more">more<i class = "material-icons">open_in_new</i></a>
-            </div>
+            <p>Hi, my name is Jack. I'm a freshman in ATCS. I make random web projects in my free time. They're mostly me being BTS trash, but some of them are useful maybe. You can find those in projects. If you wanna be notified when I release something new, email me at jacklee21@bergen.org</p>
         </div>
         <div class = "page">
             <h1>Links</h1>
@@ -74,6 +31,11 @@
         </div>
         <div class = "page">
             <h1>Projects</h1>
+            <a href = "https://jacklee5.github.io/BCAdvice" target = "blank">
+                <div class = "card">
+                    <h1>BCAdvice</h1>
+                </div> 
+            </a>
             <a href = "https://jacklee5.github.io/JAMS" target = "blank">
                 <div class = "card">
                     <h1>Catch Jimin's Jams!</h1>
@@ -85,24 +47,8 @@
                 </div> 
             </a>
         </div>
-        <script>
-            var pages = document.querySelectorAll(".page");
-            var active = 0;
-            var navLinks = document.querySelectorAll("nav a")
-            var showPage = function(index){
-                for(var i = 0; i < pages.length; i++){
-                    pages[i].style.display="none"
-                }
-                pages[index].style.display="block"
-            }
-            var navLink = function(index){
-                navLinks[index].addEventListener("click",function(){
-                    showPage(index+1)
-                })
-            }
-            for(var i = 0; i < navLinks.length; i++){
-                navLink(i)
-            }
+        <script src = "script.js">
+            
         </script>
     </body>
 </html>
