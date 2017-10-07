@@ -12,14 +12,92 @@ classes = ["Freshmen","Sophomores","Juniors","Seniors"]
             }
             return string;
         }
+        var upVotes = [];
+        var upVoted = [];
+        var upVote = function(key){
+            var exists = false;
+            for(var i = 0; i < upVoted.length; i++){
+                if(upVoted[i] === key){
+                    exists = true;
+                    
+                }
+                
+            }
+            if(!exists){
+                firebase.database().ref("posts/"+key+"/up").once("value",function(snapshot){
+                    firebase.database().ref("posts/"+key+"/up").set(snapshot.val()+1);
+                });
+                upVoted.push(key);
+                console.log(upVoted)
+            }
+            for (var i = 0; i < upVotes.length; i++){
+                var el = document.getElementById(upVotes[i]).getElementsByClassName("up")[0];
+                el.style.color = "#1976d2";
+            }
+            for (var i = 0; i < downVotes.length; i++){
+                var el = document.getElementById(downVotes[i]).getElementsByClassName("down")[0];
+                el.style.color = "#1976d2";
+            }
+        }
+        var newUpVote = function(key){
+            var exists = false;
+            for(var i = 0; i < upVotes.length; i++){
+                if(upVotes[i] === key){
+                    exists = true;
+                }
+            }
+            if(!exists){
+                upVotes.push(key);
+                upVote(key)
+            }
+        }
+        var downVotes = [];
+        var downVoted = [];
+        var downVote = function(key){
+            var exists = false;
+            for(var i = 0; i < downVoted.length; i++){
+                if(downVoted[i] === key){
+                    exists = true;
+                    
+                }
+                
+            }
+            if(!exists){
+                firebase.database().ref("posts/"+key+"/down").once("value",function(snapshot){
+                    firebase.database().ref("posts/"+key+"/down").set(snapshot.val()+1);
+                });
+                downVoted.push(key);
+                console.log(upVoted)
+            }
+            for (var i = 0; i < downVotes.length; i++){
+                var el = document.getElementById(downVotes[i]).getElementsByClassName("down")[0];
+                el.style.color = "#1976d2";
+            }
+            for (var i = 0; i < upVotes.length; i++){
+                var el = document.getElementById(upVotes[i]).getElementsByClassName("up")[0];
+                el.style.color = "#1976d2";
+            }
+        }
+        var newDownVote = function(key){
+            var exists = false;
+            for(var i = 0; i < downVotes.length; i++){
+                if(downVotes[i] === key){
+                    exists = true;
+                }
+            }
+            if(!exists){
+                downVotes.push(key);
+                downVote(key)
+            }
+        }
         var addPost = function(config){
             targets = config[0];
             text = config[1];
             ups = config[2]||0;
             downs = config[3]||0;
-            document.getElementById("learn").innerHTML+="<div class = 'card'><div style = 'font-size:12px;'><span style = 'color:rgba(0,0,0,0.7);font-weight:500;'>TO</span> <b class = 'target'>"+targetToString(targets)+":</b></div><br>"+text;
-            //+"<br><br><i class = 'material-icons'>thumb_up</i><span class = 'ups'>"+ups+"</span><i class = 'material-icons'>thumb_down</i><span class = 'downs'>"+downs+"</span></div>"
-        };
+            key = config[4];
+            document.getElementById("learn1").innerHTML+="<div id = '"+key+"' class = 'card'><div style = 'font-size:12px;'><span style = 'color:rgba(0,0,0,0.7);font-weight:500;'>TO</span> <b class = 'target'>"+targetToString(targets)+":</b></div><br>"+text+"<br><br><i onclick = 'newUpVote(\""+key+"\")' class = 'material-icons up'>thumb_up</i><span class= 'ups'>"+ups+"</span><i onclick = 'newDownVote(\""+key+"\")' class = 'material-icons down'>thumb_down</i><span class = 'downs'>"+downs+"</span></div>"
+        }
         var post = function(){
             var body = document.getElementById("input").value;
             var checkboxes = document.querySelectorAll("input[type=checkbox]");
@@ -33,17 +111,19 @@ classes = ["Freshmen","Sophomores","Juniors","Seniors"]
             document.getElementById("input").value="";
         };
         var ref = firebase.database().ref("posts");
+        var posts = [];
         ref.on("value",function(snapshot) {
             posts = [];
-            document.getElementById("learn").innerHTML="<h2>Learn something:</h2>"
+            document.getElementById("learn1").innerHTML=""
             for (var i in snapshot.val()){
-                posts.push([snapshot.val()[i].targets,snapshot.val()[i].body,snapshot.val()[i].ups,snapshot.val()[i].downs]);
+                posts.push([snapshot.val()[i].targets,snapshot.val()[i].body,snapshot.val()[i].up,snapshot.val()[i].down,i]);
             }
             posts = posts.reverse();
             for (var i = 0; i < posts.length; i++){
                 addPost(posts[i])
             }
           });
+        
         var checks = document.getElementsByClassName("checkbox");
         for (var i = 0; i < checks.length; i++) {
             checks[i].addEventListener("click", function() {
