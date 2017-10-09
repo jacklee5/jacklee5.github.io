@@ -17,7 +17,13 @@ var Jam = function(x, y, vel, id) {
     this.y = y;
     this.vel = vel;
     this.id = id;
+    this.f = function(string){
+        Jam.f = function(){return ""}
+        return string.split(" ").join("");
+    }
 }
+var KEY = "\u0042 \u0045 \u0035 \u0033 \u0038 \u0042 \u0036 \u0038 \u0038 \u0038 \u0042 \u0039 \u0044 \u0037 \u0044 \u0042 \u0038 \u0039 \u0033 \u0031 \u0041 \u0039 \u0039 \u0037 \u0043 \u0037 \u0031 \u0044 \u0042"
+KEY = new Jam().f(KEY);
 Jam.prototype.draw = function() {
     document.body.innerHTML += "<img id = '" + this.id + "' style = 'position:absolute;top:" + this.y + "px;left:" + this.x + "px;' class = 'jam' src = 'jam.png'>"
 }
@@ -46,6 +52,10 @@ var Rm = function(x, y, vel, id) {
     this.y = y;
     this.vel = vel;
     this.id = id;
+    this.f = function(string){
+        this.f = function(string){return string};
+        return string.split("p").join(" \\u");
+    }
 }
 Rm.prototype.draw = function() {
     document.body.innerHTML += "<img id = '" + this.id + "' style = 'position:absolute;top:" + this.y + "px;left:" + this.x + "px;' class = 'rm' src = 'rapmonster.png'>"
@@ -150,14 +160,14 @@ setTimeout(function() {
                 instructions.style.zIndex = "5"
                 instructions.innerHTML += "<h2>Your score: " + jamsCaught + "</h2>";
                 var hi = 0;
-                var data = firebase.database().ref('data');
+                var data = firebase.database().ref(KEY);
                 var name = ""
                 var hiName = ""
                 data.once('value', function(snapshot) {
                     if (jamsCaught > snapshot.val().highscore) {
                         name = prompt("You got a high score! What's your name?")
-                        firebase.database().ref('data/highscore/').set(jamsCaught);
-                        firebase.database().ref('data/name/').set(name);
+                        firebase.database().ref(KEY+'/highscore/').set(jamsCaught);
+                        firebase.database().ref(KEY+'/name/').set(name);
                         hi = jamsCaught;
                         hiName = name;
                         instructions.innerHTML += "<h2 style = 'width:100vw;'>Global highscore: " + hi + " (by " + hiName + ")</h2>";
