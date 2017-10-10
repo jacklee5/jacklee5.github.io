@@ -1,0 +1,129 @@
+#kaep{
+    font-size:24px;
+    font-family:"Nova Mono";
+    position:absolute;
+    bottom:16px;
+    padding:0px 16px;
+}
+#wrapper{
+    position:absolute;
+    top:0px;
+    height:100vh;
+    width:100%;
+}
+body{
+    overflow-y: hidden;
+    height:100vh;
+    width:100%;
+    margin:0px;
+    user-select: none;
+}
+#menu{
+    width:100%;
+    background:#E0E0E0;
+    font-family:"Product Sans";
+    padding:16px;
+    box-sizing:border-box;
+    position:fixed;
+    box-shadow:0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12),0 2px 4px -1px rgba(0,0,0,.2);
+}
+#menu h4{
+    margin:4px 0px;
+}
+.upgrade{
+    background:white;
+    box-shadow:0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+    display:inline-block;
+    padding:8px 16px;
+    cursor:pointer;
+}
+.upgrade h1{
+    font-size:24px;
+}
+.upgrade h1,b,p{
+    margin:0px;
+}
+
+/* RIPPLE EFFECT ======================================================= */
+
+[data-rippleEffect="button"] {
+    position: relative;
+    /* Setting the element relative for reference */
+    
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+/* box which contains the ripple */
+
+[data-rippleEffect="box"] {
+    transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    -webkit-transform: scale(1);
+    background-color: rgba(0, 0, 0, 0);
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -999999999;
+}
+/* Ripple Effect style (background, border-radius, time) */
+
+[data-rippleEffect="effect"] {
+    animation: rippleEffect 400ms forwards;
+    -moz-animation: rippleEffect 400ms forwards;
+    -o-animation: rippleEffect 400ms forwards;
+    -webkit-animation: rippleEffect 400ms forwards;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 100%;
+    position: absolute;
+    opacity: 0;
+}
+/* Effect animation */
+
+@-webkit-keyframes rippleEffect {
+    0% {
+        transform: scale(0.0);
+        -moz-transform: scale(0.0);
+        -ms-transform: scale(0.0);
+        -o-transform: scale(0.0);
+        -webkit-transform: scale(0.0);
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.0);
+        -moz-transform: scale(1.0);
+        -ms-transform: scale(1.0);
+        -o-transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+        opacity: 0;
+    }
+}
+/* Effect animation */
+
+@keyframes rippleEffect {
+    0% {
+        transform: scale(0.0);
+        -moz-transform: scale(0.0);
+        -ms-transform: scale(0.0);
+        -o-transform: scale(0.0);
+        -webkit-transform: scale(0.0);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.0);
+        -moz-transform: scale(1.0);
+        -ms-transform: scale(1.0);
+        -o-transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
