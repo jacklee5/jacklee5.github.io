@@ -104,8 +104,8 @@ upgrade("speed","3 dolla",29,250,"Bribe for some KAEP JJANG");
 upgrade("speed","INFIRES",500,1000,"Set the world on fire with KAEP JJANG");
 //CLICK UPGRADES
 upgrade("click","Amplifier",1,100,"Get more out of each shout");
-upgrade("click","Merch",3,250,"Lure some ARMY's to shout for you");
 upgrade("click","Broken recorder",2,175,"Get more out of each shout");
+upgrade("click","Merch",3,250,"Lure some ARMY's to shout for you");
 upgrade("click","INFIRES NATION",10,800,"SO MUCH POWER");
 kaep = document.getElementById("kaep");
 kaep.style.position="absolute";
