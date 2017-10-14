@@ -95,10 +95,22 @@ var upgrade = function(type,name,up,cost,desc){
         document.getElementById("click-ups").innerHTML+="<div title = '"+desc+"' class = 'upgrade' onclick = 'buy("+cost+",\"click\","+up+")'><h1>"+name+"</h1><b>Cost: <span class = 'cost'>"+cost+"</span></b><p>+"+up+"lps</p></div>"
     }
 }
-
-upgrade("speed","MIN YOONGI",5,50,"Get a Min Yoongi to shout for you")
-upgrade("click","Amplifier",1,50,"Get more out of each shout")
-
+//SPEED UPGRADES
+upgrade("speed","MIN YOONGI",5,50,"Get a Min Yoongi to shout for you");
+upgrade("speed","JUNG HOSEOK",11,100,"Give your Min Yoongi some more enthusiasm");
+upgrade("speed","수웩",16,150,"Proudly KAEP JJANGing since January 25, 2017 with suweg");
+upgrade("speed","짱짱만뿡뿡",23,200,"JJANG JJANG MAN BBOONG BBOONG");
+upgrade("speed","3 dolla",29,250,"Bribe for some KAEP JJANG");
+upgrade("speed","INFIRES",500,1000,"Set the world on fire with KAEP JJANG");
+//CLICK UPGRADES
+upgrade("click","Amplifier",1,100,"Get more out of each shout");
+upgrade("click","Merch",3,250,"Lure some ARMY's to shout for you");
+upgrade("click","Broken recorder",2,175,"Get more out of each shout");
+upgrade("click","INFIRES NATION",10,800,"SO MUCH POWER");
+kaep = document.getElementById("kaep");
+kaep.style.position="absolute";
+kaep.style.top = document.getElementById("menu").offsetHeight+32+"px";
+kaep.style.height = document.offsetHeight - (document.getElementById("menu").offsetHeight+64);
 var upgrades = document.getElementsByClassName("upgrade");
 for(var i = 0; i < upgrades.length; i++){
     upgrades[i].setAttribute("data-rippleEffect","button");
@@ -114,10 +126,43 @@ setInterval(function() {
     update();
     window.scrollTo(document.getElementById("kaep").offsetWidth, 0);
 }, 500);
+setInterval(function(){
+    document.getElementById("time").innerHTML = parseInt(document.getElementById("time").innerHTML)-1;
+}, 1000)
 playSound("kaep.mp3");
 setInterval(function(){
     playSound("kaep.mp3");
 },18000)
+//End the game
+setTimeout(function(){
+    lps = 0;
+    lpc = 0;
+    document.getElementById("end").style.display="block";
+    document.getElementById("darken").style.display="block";
+    document.body.style.overflowX = "hidden";
+    document.getElementById("final-letters").innerHTML = document.getElementById("kaep").innerHTML;
+    document.getElementById("final-score").innerHTML = getLetters();
+    scores = firebase.database().ref("scores");
+    score = scores.push({
+        name: prompt("To save your score, please enter your name: "),
+        score: getLetters()
+    });
+    firebase.database().ref('scores').once('value', function(snapshot) {
+        data = [];
+        for(var i in snapshot.val()){
+            data.push(snapshot.val()[i]);
+        }
+        data = data.sort(function(a,b){return b["score"] - a["score"] });
+        console.log(data);
+        for(var i = 0; i < 5; i ++){
+            document.getElementById("leaderboard").innerHTML+="<tr><td>"+(i+1)+"</td><td>"+data[i].name+"</td><td>"+data[i].score+"</td></tr>";
+        }
+    })
+    firebase.database().ref('plays').once('value', function(snapshot) {
+        plays = snapshot.val();
+        firebase.database().ref('plays').set(plays + 1);
+    });
+},60000)
 {
 // Get all the elements that requiere the effect
 var rippleButton = document.querySelectorAll('[data-rippleEffect="button"]');

@@ -8,10 +8,11 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div id = "wrapper"><div id = "kaep">KAEP<br>JJANG</div></div>
+        <div id = "wrapper"><div id = "kaep" class = "wordwrap">KAEP<br>JJANG</div></div>
         <div id = "menu">
             <div><b>Length of your KAEP JJANG: </b><span id = "score">9</span></div>
             <div style = "position:absolute;right:16px;top:16px;"><b>Letters per second: </b><span id = "speed">0</span></div>
+            <div style = "position:absolute;left:50%;transform:translateX(-50%);top:16px;"><b>Time remaining: </b><span id = "time">60</span>s</div>
             <h2 style = "margin:4px 0px;">Upgrades: </h2>
             <h4>Speed:</h4>
             <div id = "speed-ups">
@@ -22,6 +23,35 @@
 
             </div>
         </div>
+        <div id = "darken"></div>
+        <div id = "end">
+            <h1 style = "margin:0px;">Time's up!</h1>
+            <h3>Congrats! You wasted one whole minute of your life making KAEP JJANG instead of work.</h3>
+            <p>Well, at least your KAEP JJANG was <span id = "final-score">0</span> letters long.</p>
+            <h4>Here's your KAEP JJANG:</h4>
+            <div id = "letter-container"><div id = "final-letters">KAEP JJANG</div></div>
+            <h4>Leaderboard</h4>
+            <table id = "leaderboard" cellpadding = "8px" cellspacing = "8px">
+                <tr>
+                    <th style = "width:80px;">Position</th>
+                    <th>Name</th>
+                    <th>Score</th>
+                </tr>
+            </table>
+        </div>
+        <script src="https://www.gstatic.com/firebasejs/4.5.1/firebase.js"></script>
+        <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyC_J-K1LBcF3_6av0M2b9okJ9eVccSNfj8",
+            authDomain: "kaep-jjang.firebaseapp.com",
+            databaseURL: "https://kaep-jjang.firebaseio.com",
+            projectId: "kaep-jjang",
+            storageBucket: "kaep-jjang.appspot.com",
+            messagingSenderId: "788980200965"
+          };
+          firebase.initializeApp(config);
+        </script>
         <script src = "script.js"></script>
     </body>
 </html>
