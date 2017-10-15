@@ -1,0 +1,7 @@
+body{
+    background:url("background.jpg");
+    background-size:cover;
+    height:100vh;
+    overflow:hidden;
+    font-family:"Gloria Hallelujah",cursive;
+}

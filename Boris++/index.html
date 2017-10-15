@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Boris++</title>
+        <meta charset = "utf-8">
+        <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+        <link rel = "stylesheet" href = "style.css">
+    </head>
+    <body>
+        <b>Time wasted: <span id = "time">0s</span></b><br>
+        <b>Global highscore: <span id = "hightime"></span>s by <span id = "highname"></span></b>
+        <script src="https://www.gstatic.com/firebasejs/4.5.1/firebase.js"></script>
+        <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyBDxDl2kpHPPIpUsG4ONgZmieYtMb9gVwg",
+            authDomain: "borispp-6fae8.firebaseapp.com",
+            databaseURL: "https://borispp-6fae8.firebaseio.com",
+            projectId: "borispp-6fae8",
+            storageBucket: "borispp-6fae8.appspot.com",
+            messagingSenderId: "479525535832"
+          };
+          firebase.initializeApp(config);
+        </script>
+        <script src = "script.js"></script>
+    </body>
+</html>
