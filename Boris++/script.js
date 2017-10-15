@@ -43,8 +43,7 @@ var newCollider = function(index,x,y){
     id += 1;
     collider("c"+id,colliders[index][0],colliders[index][1],colliders[index][2],x,y);
 }
-
-time = document.getElementById("time");
+t = 0;
 name = prompt("Welcome to Boris++! Here's what you can do here:\n 1. Enter your name below in case you end up wasting the most time here.\n 2. Click to add a thingy. If you don't do anything, your time won't be saved. \n 3. Have fun I guess?")
 window.onbeforeunload = function(e){
     return "null";
@@ -52,7 +51,7 @@ window.onbeforeunload = function(e){
 window.onunload = function(){
     firebase.database().ref("highscore").set({
         name:name,
-        time:parseInt(time.innerHTML)
+        time:t
     });
 }
 firebase.database().ref("views").once("value",function(snapshot){
@@ -65,6 +64,14 @@ firebase.database().ref("highscore").once("value",function(snapshot){
 document.body.addEventListener("click",function(e){
     newCollider(randInt(1,colliders.length)-1,e.clientX,e.clientY);
 })
-setInterval(function(){
-    time.innerHTML = (parseInt(time.innerHTML)+1)+"s";
+var updateTime = function(){
+    time = document.getElementById("time");
+    time.innerHTML = t+1+"s";
+    t+=1;
+    setTimeout(function(){
+        updateTime();
+    },1000)
+}
+setTimeout(function(){
+    updateTime();
 },1000)
