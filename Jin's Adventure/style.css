@@ -1,0 +1,53 @@
+body{
+    background:url('background.jpg');
+    background-size:cover;
+    background-position:0px;
+    animation:background 50s infinite linear;
+    font-family:"Acme";
+    margin:0px;
+    width:100%;
+    height:100vh;
+}
+@keyframes background{
+    from{
+        background-position:0px;
+    }to{
+        background-position:-100vw;
+    }
+}
+#player{
+    width:10%;
+}
+#game{
+    display:none;
+}
+#caption{
+    position:absolute;
+    bottom:16px;
+    font-size:24px;
+    color:white;
+    text-align:center;
+    width:100%;
+}
+#title{
+    font-family:"Press Start 2P";
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    color:white;
+    text-transform:uppercase;
+    text-align:Center;
+}
+#instructions{
+    transition:all 1s;
+    display:none;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    color:white;
+}
+#instructions li{
+    font-size:24px;
+}

@@ -1,0 +1,58 @@
+@import 'https://fonts.googleapis.com/css?family=Baloo+Bhaina';
+@import 'https://fonts.googleapis.com/css?family=Modak';
+
+
+@-webkit-keyframes pulse {
+    /*0% {background-color: #45CEEF;}*/
+    0% {background-color: #242075;}
+    /*20% {background-color: #45CEEF;}
+    30% {background-color: #5394cf;}
+    40% {background-color: #242075;}
+    60% {background-color: #242075;}
+    70% {background-color: #45CEEF;}
+    90% {background-color: #5394cf;}
+    100% {background-color: #242075;}*/
+   
+    40% {background-color: #76B6C4;}
+    50% {background-color: #1ABC9C;}
+    60% {background-color: #45CEEF;}
+    70% {background-color: #E44FFF;}
+    80% {background-color: #52BE80;}
+    100% {background-color: #8E44AD;}
+
+}
+
+body {
+    background-color: #242075;
+    font-family: 'Modak', cursive;
+    -webkit-animation: pulse 80s infinite alternate;
+}
+
+p{
+    text-align:center;
+    font-size: 40px;
+    margin-bottom: 0px;
+}
+
+#startBtn{
+    font-size:25px;
+    margin-top: 0px;
+    border: 3px solid black;
+    text-align: center;
+}
+
+#gameList{
+    list-style: none;
+}
+
+.app {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    width:100%;
+    height:100%
+}
+
+.menu{
+    background-image:url("menu_background.png");
+}

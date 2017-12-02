@@ -1,0 +1,33 @@
+body{
+    margin:0px;
+    font-family:"Product Sans"
+}
+.block{
+    background:#EF9A9A;
+    width:100%;
+    height:100vh;
+    position:relative;
+    overflow:hidden;
+    transition:all .3s;
+}
+.block .text{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+}
+.block .text *{
+    margin:0px;
+}
+.block .text b{
+    text-transform:uppercase;
+    font-weight:500;
+    color:#212121;
+}
+.block .text p{
+    margin-top:4px;
+}
+#next{
+    background: #90CAF9;
+}
