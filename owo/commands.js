@@ -22,6 +22,10 @@ var commands = [
     {
         name: "!ofaces [num]",
         function: "Sends [num] faces, or one if not specified.<br><b>Warning:</b> Extreme spam can be generated from this."
+    },
+    {
+        name: "!osuggest [suggstion]",
+        function: "OwO becomes your personal messenger and escorts your suggestion to my private server."
     }
 ]
 var how = function(){
