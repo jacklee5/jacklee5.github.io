@@ -1,0 +1,112 @@
+body{
+    margin:0px;
+    background:#fafafa;
+    overflow-x:hidden;
+}
+#logo, #title, header{
+    animation: .2s slideDown cubic-bezier(0.4, 0.0, 0.2, 1) forwards;
+}
+header{
+    background:#7289da;
+    height:256px;
+    padding:16px 0px;
+}
+#logo{
+    animation-delay:.2s;
+    position:relative;
+    left:50%;
+    height:216px;
+    position:relative;
+    bottom:256px;
+    transform:TranslateX(-50%);
+}
+#title{
+    animation-delay:.4s;
+    color:white;
+    font-family:Ranchers, sans-serif;
+    font-size:24px;
+    text-align:center;
+    position:relative;
+    margin:0px;
+    bottom:256px;
+    margin-top:-18px;
+    font-weight:400;
+}
+@keyframes slideDown{
+    from{
+        position:relative;
+        bottom:256px;
+    }to{
+        position:relative;
+        bottom:0px;
+    }
+}
+.page{
+    animation: .2s slideIn cubic-bezier(0.4, 0.0, 0.2, 1) forwards;
+}
+@keyframes slideIn{
+    from{
+        position:relative;
+        left:100px;
+        opacity:0;
+    }to{
+        position:relative;
+        left:0px;
+        opacity:1;
+    }
+}
+main{
+    padding:16px 32px;
+    font-family:"Lato";
+}
+nav{
+    width:100%;
+    height:64px;
+    background:#3f5ca8;
+    font-size:0px;
+}
+.center{
+    position:absolute;
+    left:50%;
+    transform:TranslateX(-50%);
+}
+nav a{
+    color:white;
+    line-height:64px;
+    text-transform:uppercase;
+    font-weight:500;
+    font-family:"Lato";
+    height:64px;
+    padding:0px 16px;
+    display:inline-block;
+    font-size:14px;
+    transition: .3s cubic-bezier(0.4, 0.0, 0.2, 1) all;
+    cursor:pointer;
+}
+nav a:hover{
+    background:rgba(0,0,0,0.2)
+}
+pre{
+    display:inline-block;
+    background:#E0E0E0;
+    padding:2px;
+}
+#commands{
+    width:100%;
+    text-align:left;
+    box-shadow:0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+    position:relative;
+}
+#commands tr:nth-child(1){
+    background:white;
+    position:relative;
+}
+#commands th:nth-child(1){
+    width:300px;
+}
+#commands tr:nth-of-type(even){
+    background:#f5f5f5
+}
+#commands tr:nth-of-type(odd){
+    background:white;
+}
