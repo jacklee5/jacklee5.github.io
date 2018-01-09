@@ -24,6 +24,18 @@ var commands = [
         function: "Sends [num] faces, or one if not specified.<br><b>Warning:</b> Extreme spam can be generated from this."
     },
     {
+        name: "!oinvite",
+        function: "Get the invite link for the bot"
+    },
+    {
+        name: "!osetspamcap [num]",
+        function: "Set a spam cap for the bot, in messages"
+    },
+    {
+        name: "!ospamcap",
+        function: "View the bot's spam cap"
+    }
+    {
         name: "!osuggest [suggstion]",
         function: "OwO becomes your personal messenger and escorts your suggestion to my private server."
     }
