@@ -34,7 +34,7 @@ var commands = [
     {
         name: "!ospamcap",
         function: "View the bot's spam cap"
-    }
+    },
     {
         name: "!osuggest [suggstion]",
         function: "OwO becomes your personal messenger and escorts your suggestion to my private server."
