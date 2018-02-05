@@ -4,12 +4,7 @@ var NUMJAMS = 5;
 var rms = 5;
 var pSpeed = 10;
 var playSound = function(file) {
-    var snd1 = new Audio();
-    var src1 = document.createElement("source");
-    src1.type = "audio/mpeg";
-    src1.src = file;
-    snd1.appendChild(src1);
-    snd1.play();
+    
 }
 playSound(NOJAMS);
 var Jam = function(x, y, vel, id) {
