@@ -1,8 +1,16 @@
 body{
 	margin:0px;
-	background:url('background.png');
+	background:url('background.jpg');
 	overflow:hidden;
-    background-size:cover;
+    background-size:contain;
+    animation:background .2s infinite linear;
+}
+@keyframes background{
+    from{
+        background-position:0% 0vh;
+    }to{
+        background-position:0% 100vh;
+    }
 }
 #jimin{
 	position:absolute;
@@ -61,12 +69,13 @@ body{
 	transform:translate(-50%,-50%);
 	text-transform:uppercase;
 	text-align:center;
+    color:white;
 }
 #player{
 	position:absolute;
 	bottom:8%;
 	left:44%;
-    width:8%;
+    width:5%;
 }
 .jam{
 	position:absolute;

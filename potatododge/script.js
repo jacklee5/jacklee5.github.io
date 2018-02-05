@@ -86,7 +86,6 @@ setTimeout(function() {
     }
 }, 2000)
 document.getElementById("game").style.display = "block";
-document.body.style.background = "url('background.png')"
 document.body.style.width = "100vw";
 document.body.style.height = "100vh";
 document.body.style.backgroundSize = "contain";
