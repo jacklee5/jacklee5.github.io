@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>PotatoDodge</title>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link rel = "stylesheet" href = "style.css">
+</head>
+
+<body>
+    <div id="game">
+        <p style="padding-left:16px;z-index:500000000;">HELP CAUGHT: <span id="score">0</span></p>
+        <div id="instructions">
+            <h1>PotatoDodge!</h1>
+            <p>(Left and right arrow keys to move)</p>
+            <p>avoid any falling pythons</p>
+            <p>pick up stackoverflows</p>
+        </div>
+        <img width="5%" id="player" src="player.png">
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyD3OxsJLgK302zZ_fMTgRKfE_LHdg3y5iA",
+            authDomain: "jams-aacfe.firebaseapp.com",
+            databaseURL: "https://jams-aacfe.firebaseio.com",
+            projectId: "jams-aacfe",
+            storageBucket: "",
+            messagingSenderId: "310013216997"
+        };
+        firebase.initializeApp(config);
+        var database = firebase.database()
+    </script>
+    <script src = "script.js">
+        
+    </script>
+</body>
+
+</html>
